@@ -19,14 +19,18 @@ describe('Simon component', () => {
   });
 
   it('changes color based on state', () => {
+    wrapper.setState({color: 'black'});
     expect(simonDiv).to.have.style('background', 'black');
     wrapper.setState({color: 'red'});
     expect(simonDiv).to.have.style('background', 'red');
   });
 
-  it('changes color state to red on click', ()  => {
+  it('changes color state on click', ()  => {
+    wrapper.setState({color: 'black'});
     simonDiv.simulate('click');
     expect(wrapper.state().color).to.equal('red');
+    simonDiv.simulate('click');
+    expect(wrapper.state().color).to.equal('black');
   });
 
 });
