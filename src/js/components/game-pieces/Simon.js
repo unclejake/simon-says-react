@@ -18,7 +18,7 @@ class Simon extends React.Component {
 
   render() {
     return (
-      <div id="simon" style={{height: '20px', width: '20px', background: 'blue'}} onClick={this.handleClick} />
+      <div id="simon" style={{height: '100px', width: '100px', background: 'blue'}} onClick={this.handleClick} />
     );
   };
 
