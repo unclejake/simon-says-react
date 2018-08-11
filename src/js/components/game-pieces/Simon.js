@@ -13,12 +13,12 @@ class Simon extends React.Component {
   };
 
   handleClick(e) {
-    console.log('ive been clicked!');
+    this.setState({color: 'red'});
   };
 
   render() {
     return (
-      <div id="simon" style={{height: '100px', width: '100px', background: 'blue'}} onClick={this.handleClick} />
+      <div id="simon" style={{height: '100px', width: '100px', background: (this.state.color !== null ? this.state.color : 'black')}} onClick={this.handleClick} />
     );
   };
 
