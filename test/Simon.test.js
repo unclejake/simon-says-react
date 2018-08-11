@@ -25,12 +25,16 @@ describe('Simon component', () => {
     expect(simonDiv).to.have.style('background', 'red');
   });
 
-  it('changes color state on click', ()  => {
+  it('changes color state on mouseDown', ()  => {
     wrapper.setState({color: 'black'});
-    simonDiv.simulate('click');
+    simonDiv.simulate('mouseDown');
     expect(wrapper.state().color).to.equal('red');
-    simonDiv.simulate('click');
-    expect(wrapper.state().color).to.equal('black');
+  });
+
+  it('changes color state on mouseUp', ()  => {
+    wrapper.setState({color: 'black'});
+    simonDiv.simulate('mouseUp');
+    expect(wrapper.state().color).to.equal('red');
   });
 
 });
