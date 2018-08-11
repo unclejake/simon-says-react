@@ -2,8 +2,8 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, {mount, shallow} from 'enzyme';
 import {expect, should} from 'chai';
-import Screen from '../src/js/components/containers/Screen';
 Enzyme.configure({ adapter: new Adapter() });
+import Screen from '../src/js/components/containers/Screen';
 
 describe('Screen component', () => {
 
