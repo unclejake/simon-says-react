@@ -7,7 +7,7 @@ class Simon extends React.Component {
     this.state = {
       color: 'black',
       shape: null,
-      isClicked: false
+      isFlashing: false
     };
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
@@ -15,7 +15,6 @@ class Simon extends React.Component {
     this.colorPairs['red'] = 'black';
     this.colorPairs['black'] = 'red';
   };
-
 
   handleMouseDown(e) {
     for(var color in this.colorPairs) {

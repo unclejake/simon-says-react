@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Screen from './components/containers/Screen';
-import Simon from './components/game-pieces/Simon';
+import Game from './components/containers/Game';
 
 class App extends React.Component {
 
@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
       <div>
         <Screen>
-          <Simon />
+          <Game />
         </Screen>
       </div>
     );

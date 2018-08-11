@@ -37,4 +37,7 @@ describe('Simon component', () => {
     expect(wrapper.state().color).to.equal('red');
   });
 
+  // so the simon component needs to like, you know, beep and flash and change color for a second, that's how you know to click it
+  // also later it should flash a little bit after the simon component before it in a pattern flashes, but thats not important now
+
 });
