@@ -5,8 +5,8 @@ class StartButton extends React.Component {
   render() {
     return(
       <div>
-        <button id="startGameButton">
-          Start Game
+        <button id="toggleGameButton" onClick={this.props.gameRunning ? this.props.endGame : this.props.startGame}>
+          {this.props.gameRunning ? 'End Game' : 'Start Game'}
         </button>
       </div>
     );

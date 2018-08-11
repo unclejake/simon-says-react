@@ -14,8 +14,15 @@ describe('Game component', () => {
 
   const wrapper = shallow(<Game />);
 
-  it('renders Simon component', () => {
+  it('renders Simon component based on gameRunnning state', () => {
+    wrapper.setState({gameRunnning: true});
     expect(wrapper.find(Simon));
+    wrapper.setState({gameRunnning: false});
+    expect(!wrapper.find(Simon));
+  });
+
+  it('renders StartButton component', () => {
+    expect(wrapper.find(StartButton));
   });
 
 });

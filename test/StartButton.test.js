@@ -10,10 +10,26 @@ import StartButton from '../src/js/components/menu/StartButton';
 
 describe('StartButton component', () => {
 
-  const wrapper = shallow(<StartButton />);
+  const startGameSpy = spy();
+  const endGameSpy = spy();
 
-  it('renders a button with startGameButton id', () => {
-    expect(wrapper.find('button#startGameButton'));
+  const wrapper = shallow(<StartButton startGame={startGameSpy} endGame={endGameSpy} />);
+
+  it('renders a button with toggleGameButton id', () => {
+    expect(wrapper.find('button#toggleGameButton'));
   });
+
+  it('calls startGame function from props if gameRunning prop is false', () => {
+    wrapper.setProps({gameRunning: false});
+    wrapper.find('button#toggleGameButton').simulate('click');
+    expect(startGameSpy).to.have.property('callCount', 1);
+  });
+
+  it('calls endGame function from props if gameRunning prop is true', () => {
+    wrapper.setProps({gameRunning: true});
+    wrapper.find('button#toggleGameButton').simulate('click');
+    expect(endGameSpy).to.have.property('callCount', 1);
+  });
+
 
 });
