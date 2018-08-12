@@ -8,7 +8,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       gameRunning: false,
-      numberOfSimons: 5
+      numberOfSimons: 1
     };
     this.startGame = this.startGame.bind(this);
     this.endGame = this.endGame.bind(this);

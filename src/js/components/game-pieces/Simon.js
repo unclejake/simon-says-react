@@ -8,7 +8,8 @@ class Simon extends React.Component {
     this.state = {
       startingColor: this.props.startingColor,
       switchColor: this.props.switchColor,
-      wasPressed: false
+      wasPressed: false,
+      shouldBePressed: this.props.shouldBePressed
     };
     this.flash = this.flash.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);

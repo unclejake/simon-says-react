@@ -14,6 +14,8 @@ describe('Simon component', () => {
 
   const simonDiv = wrapper.find('div#simon');
 
+  jest.useFakeTimers();
+
   it('renders a div with id of simon', () => {
     expect(wrapper.find('div#simon'));
   });
@@ -22,13 +24,18 @@ describe('Simon component', () => {
     expect(simonDiv).to.have.style('background', 'green');
   });
 
+
+  it('changes colors if flash function is called', () => {
+    wrapper.instance().flash();
+    expect(simonDiv).to.have.style('background', 'blue');
+    jest.runAllTimers();
+    expect(simonDiv).to.have.style('background', 'green');
+  });
+
   it('changes between startingColor and switchColor on mouseDown', () => {
     simonDiv.simulate('mouseDown');
     expect(simonDiv).to.have.style('background', 'blue');
   });
-
-
-  jest.useFakeTimers();
 
   it('changes colors back after a timeout on mouseDown', () => {
     simonDiv.simulate('mouseDown');
@@ -40,6 +47,11 @@ describe('Simon component', () => {
     simonDiv.simulate('mouseDown');
     simonDiv.simulate('mouseDown');
     expect(simonDiv).to.have.style('background', 'blue');
+    jest.runAllTimers();
   });
 
+  // so there's a couple things i need to do before i have what i think would be MVP
+  // i need the simons to flash in a pattern at game start
+  // i need the user to be able to hit simons in that pattern's order in order to succeed
+  // i need the simons to show up in a shape of some sort instead of some giant ol' line
 });
