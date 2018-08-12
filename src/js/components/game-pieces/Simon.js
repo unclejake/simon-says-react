@@ -1,44 +1,29 @@
 import React from 'react';
+import {switchColor} from '../../functions/stateChange';
 
 class Simon extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      color: 'black',
-      shape: null,
-      isFlashing: false
+      startingColor: this.props.startingColor,
+      switchColor: this.props.switchColor
     };
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
-    this.colorPairs = {};
-    this.colorPairs['red'] = 'black';
-    this.colorPairs['black'] = 'red';
   };
 
   handleMouseDown(e) {
-    for(var color in this.colorPairs) {
-      if(this.colorPairs.hasOwnProperty(color)) {
-        if(color === this.state.color) {
-          this.setState({color: this.colorPairs[color]});
-        };
-      };
-    };
+    this.setState(switchColor);
   };
 
   handleMouseUp(e) {
-    for(var color in this.colorPairs) {
-      if(this.colorPairs.hasOwnProperty(color)) {
-        if(color === this.state.color) {
-          this.setState({color: this.colorPairs[color]});
-        };
-      };
-    };
+    this.setState(switchColor);
   };
 
   render() {
     return (
-      <div id="simon" style={{height: '100px', width: '100px', background: (this.state.color)}} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} />
+      <div id="simon" style={{height: '100px', width: '100px', background: this.state.startingColor}} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} />
     );
   };
 
