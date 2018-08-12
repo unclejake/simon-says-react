@@ -15,9 +15,9 @@ describe('Game component', () => {
   const wrapper = shallow(<Game />);
 
   it('renders Simon component based on gameRunnning state', () => {
-    wrapper.setState({gameRunnning: true});
+    wrapper.setState({gameRunning: true});
     expect(wrapper.find(Simon));
-    wrapper.setState({gameRunnning: false});
+    wrapper.setState({gameRunning: false});
     expect(!wrapper.find(Simon));
   });
 

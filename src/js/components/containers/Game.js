@@ -7,25 +7,25 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameRunnning: false
+      gameRunning: false
     };
     this.startGame = this.startGame.bind(this);
     this.endGame = this.endGame.bind(this);
   };
 
   startGame() {
-    this.setState({gameRunnning: true});
+    this.setState({gameRunning: true});
   };
 
   endGame() {
-    this.setState({gameRunnning: false});
+    this.setState({gameRunning: false});
   };
 
   render() {
     return(
       <div id="game">
-        {this.state.gameRunnning ? <Simon startingColor={'green'} switchColor={'red'} /> : null}
-        <StartButton gameRunning={this.state.gameRunnning} startGame={this.startGame} endGame={this.endGame} />
+        {this.state.gameRunning ? <Simon startingColor={'green'} switchColor={'red'} /> : null}
+        <StartButton gameRunning={this.state.gameRunning} startGame={this.startGame} endGame={this.endGame} />
       </div>
     );
   };

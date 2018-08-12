@@ -10,20 +10,16 @@ class Simon extends React.Component {
       switchColor: this.props.switchColor
     };
     this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
   };
 
   handleMouseDown(e) {
     this.setState(switchColor);
-  };
-
-  handleMouseUp(e) {
-    this.setState(switchColor);
+    setTimeout(() => {this.setState(switchColor)}, 1000);
   };
 
   render() {
     return (
-      <div id="simon" style={{height: '100px', width: '100px', background: this.state.startingColor}} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} />
+      <div id="simon" style={{height: '100px', width: '100px', background: this.state.startingColor}} onMouseDown={this.handleMouseDown} />
     );
   };
 
