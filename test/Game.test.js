@@ -12,7 +12,7 @@ import StartButton from '../src/js/components/menu/StartButton';
 
 describe('Game component', () => {
 
-  const wrapper = shallow(<Game />);
+  const wrapper = mount(<Game />);
 
   it('renders Simon component based on gameRunnning state', () => {
     wrapper.setState({gameRunning: true});
@@ -23,6 +23,12 @@ describe('Game component', () => {
 
   it('renders StartButton component', () => {
     expect(wrapper.find(StartButton));
+  });
+
+  it('renders a number of Simons equal to numberOfSimons state', () => {
+    wrapper.setState({gameRunning: true});
+    wrapper.setState({numberOfSimons: 5});
+    expect(wrapper.find(Simon)).to.have.length(5);
   });
 
 });

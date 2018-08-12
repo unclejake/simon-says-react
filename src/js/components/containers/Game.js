@@ -7,7 +7,8 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameRunning: false
+      gameRunning: false,
+      numberOfSimons: 5
     };
     this.startGame = this.startGame.bind(this);
     this.endGame = this.endGame.bind(this);
@@ -22,9 +23,12 @@ class Game extends React.Component {
   };
 
   render() {
+    if(this.state.gameRunning) {
+      this.simons = Array.from(Array(this.state.numberOfSimons).keys()).map((simon, index) => (<Simon key={index} startingColor={'green'} switchColor={'red'} />));
+    };
     return(
       <div id="game">
-        {this.state.gameRunning ? <Simon startingColor={'green'} switchColor={'red'} /> : null}
+        {this.simons}
         <StartButton gameRunning={this.state.gameRunning} startGame={this.startGame} endGame={this.endGame} />
       </div>
     );
