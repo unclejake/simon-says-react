@@ -36,4 +36,10 @@ describe('Simon component', () => {
     expect(simonDiv).to.have.style('background', 'green');
   });
 
+  it('does not change colors if mouseDown event happens during timer', () => {
+    simonDiv.simulate('mouseDown');
+    simonDiv.simulate('mouseDown');
+    expect(simonDiv).to.have.style('background', 'blue');
+  });
+
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {switchColor} from '../../functions/stateChange';
+import {switchColor, toggleWasPressed} from '../../functions/stateChange';
 
 class Simon extends React.Component {
 
@@ -7,14 +7,20 @@ class Simon extends React.Component {
     super(props);
     this.state = {
       startingColor: this.props.startingColor,
-      switchColor: this.props.switchColor
+      switchColor: this.props.switchColor,
+      wasPressed: false
     };
     this.handleMouseDown = this.handleMouseDown.bind(this);
   };
 
   handleMouseDown(e) {
-    this.setState(switchColor);
-    setTimeout(() => {this.setState(switchColor)}, 1000);
+    if(!this.state.wasPressed) {
+      this.setState(switchColor);
+      this.setState(toggleWasPressed);
+      // not sure if there's a better way to do this but this works
+      setTimeout(() => {this.setState(switchColor)}, 1000);
+      setTimeout(() => {this.setState(toggleWasPressed)}, 1000);
+    };
   };
 
   render() {

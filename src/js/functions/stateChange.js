@@ -7,3 +7,10 @@ function switchColor(state, props) {
   };
 };
 export {switchColor};
+
+function toggleWasPressed(state, props) {
+  return {
+    wasPressed: !state.wasPressed
+  };
+};
+export {toggleWasPressed};
