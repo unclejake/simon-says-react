@@ -10,16 +10,21 @@ class Simon extends React.Component {
       switchColor: this.props.switchColor,
       wasPressed: false
     };
+    this.flash = this.flash.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
   };
 
+  flash() {
+    this.setState(switchColor);
+    this.setState(toggleWasPressed);
+    // not sure if there's a better way to do this but this works
+    setTimeout(() => {this.setState(switchColor)}, 1000);
+    setTimeout(() => {this.setState(toggleWasPressed)}, 1000);
+  }
+
   handleMouseDown(e) {
     if(!this.state.wasPressed) {
-      this.setState(switchColor);
-      this.setState(toggleWasPressed);
-      // not sure if there's a better way to do this but this works
-      setTimeout(() => {this.setState(switchColor)}, 1000);
-      setTimeout(() => {this.setState(toggleWasPressed)}, 1000);
+      this.flash();
     };
   };
 
