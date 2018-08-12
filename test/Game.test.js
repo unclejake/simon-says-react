@@ -25,10 +25,24 @@ describe('Game component', () => {
     expect(wrapper.find(StartButton));
   });
 
-  it('renders a number of Simons equal to numberOfSimons state', () => {
-    wrapper.setState({gameRunning: true});
-    wrapper.setState({numberOfSimons: 5});
-    expect(wrapper.find(Simon)).to.have.length(5);
+  describe('when rendering multiple Simon components', () => {
+
+    it('renders a number of Simons equal to numberOfSimons state', () => {
+      wrapper.setState({gameRunning: true});
+      wrapper.setState({numberOfSimons: 5});
+      expect(wrapper.find(Simon)).to.have.length(5);
+    });
+
+    it('assigns a unique id to each Simon component', () => {
+      var testNumber = 3;
+      wrapper.setState({gameRunning: true});
+      wrapper.setState({numberOfSimons: testNumber});
+      expect(wrapper.find(Simon)).to.have.length(testNumber);
+      for(var i = 0; i < testNumber; i++) {
+        expect(wrapper.find('[id="simon_' + i + '"]')).to.have.length(1);
+      };
+    });
+
   });
 
 });

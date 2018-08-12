@@ -10,14 +10,14 @@ import Simon from '../src/js/components/game-pieces/Simon';
 
 describe('Simon component', () => {
 
-  const wrapper = mount(<Simon startingColor='green' switchColor='blue' />);
+  const wrapper = mount(<Simon index={1} startingColor='green' switchColor='blue' />);
 
-  const simonDiv = wrapper.find('div#simon');
+  const simonDiv = wrapper.find('div#simon_1');
 
   jest.useFakeTimers();
 
   it('renders a div with id of simon', () => {
-    expect(wrapper.find('div#simon'));
+    expect(wrapper.find('div#simon_1'));
   });
 
   it('on first render has color based on startingColor prop', () => {

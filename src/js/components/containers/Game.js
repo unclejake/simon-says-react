@@ -24,7 +24,7 @@ class Game extends React.Component {
 
   render() {
     if(this.state.gameRunning) {
-      this.simons = Array.from(Array(this.state.numberOfSimons).keys()).map((simon, index) => (<Simon key={index} startingColor={'green'} switchColor={'red'} />));
+      this.simons = Array.from(Array(this.state.numberOfSimons).keys()).map((simon, index) => (<Simon key={'simon_' + index} index={index} startingColor={'green'} switchColor={'red'} />));
     };
     return(
       <div id="game">

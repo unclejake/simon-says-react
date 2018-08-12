@@ -16,11 +16,16 @@ class Simon extends React.Component {
   };
 
   flash() {
+    // calling functional setState functions from stateChange.js
     this.setState(switchColor);
     this.setState(toggleWasPressed);
     // not sure if there's a better way to do this but this works
     setTimeout(() => {this.setState(switchColor)}, 1000);
     setTimeout(() => {this.setState(toggleWasPressed)}, 1000);
+  };
+
+  flashAtInterval() {
+
   }
 
   handleMouseDown(e) {
@@ -31,7 +36,7 @@ class Simon extends React.Component {
 
   render() {
     return (
-      <div id="simon" style={{height: '100px', width: '100px', background: this.state.startingColor}} onMouseDown={this.handleMouseDown} />
+      <div id={'simon_' + this.props.index} style={{height: '100px', width: '100px', background: this.state.startingColor}} onMouseDown={this.handleMouseDown} />
     );
   };
 
