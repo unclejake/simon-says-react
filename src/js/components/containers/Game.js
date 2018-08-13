@@ -8,7 +8,13 @@ class Game extends React.Component {
     super(props);
     this.state = {
       gameRunning: false,
-      numberOfSimons: 1
+      numberOfSimons: 1,
+      colorPairs: [
+        {startingColor: 'red', switchColor: 'blue'},
+        {startingColor: 'green', switchColor: 'yellow'},
+        {startingColor: 'yellow', switchColor: 'red'},
+        {startingColor: 'blue', switchColor: 'green'}
+      ]
     };
     this.startGame = this.startGame.bind(this);
     this.endGame = this.endGame.bind(this);
@@ -24,7 +30,11 @@ class Game extends React.Component {
 
   render() {
     if(this.state.gameRunning) {
-      this.simons = Array.from(Array(this.state.numberOfSimons).keys()).map((simon, index) => (<Simon key={'simon_' + index} index={index} startingColor={'green'} switchColor={'red'} />));
+      this.simons = Array.from(Array(this.state.numberOfSimons).keys()).map((simon, index) => (
+        <Simon key={'simon_' + index} index={index} startingColor={this.state.colorPairs[index % 4].startingColor} switchColor={this.state.colorPairs[index % 4].switchColor} />
+      ));
+    } else {
+      this.simons = null;
     };
     return(
       <div id="game">

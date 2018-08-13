@@ -14,6 +14,13 @@ describe('Game component', () => {
 
   const wrapper = mount(<Game />);
 
+  it('toggling gameRunning state a couple times still despawns/respawns Simon components', () => {
+    wrapper.setState({gameRunning: true});
+    expect(wrapper.find(Simon));
+    wrapper.setState({gameRunning: false});
+    expect(!wrapper.find(Simon));
+  });
+
   it('renders Simon component based on gameRunnning state', () => {
     wrapper.setState({gameRunning: true});
     expect(wrapper.find(Simon));
@@ -41,6 +48,27 @@ describe('Game component', () => {
       for(var i = 0; i < testNumber; i++) {
         expect(wrapper.find('[id="simon_' + i + '"]')).to.have.length(1);
       };
+    });
+
+    it('assigns different Simons different colors', () => {
+      wrapper.setState({
+        colorPairs: [
+          {startingColor: 'red', switchColor: 'blue'},
+          {startingColor: 'green', switchColor: 'yellow'},
+          {startingColor: 'yellow', switchColor: 'red'},
+          {startingColor: 'blue', switchColor: 'green'}
+        ]
+      });
+      wrapper.setState({gameRunning: true});
+      wrapper.setState({numberOfSimons: 4});
+      const simonStyle0 = wrapper.find('[id="simon_0"]').prop('style');
+      const simonStyle1 = wrapper.find('[id="simon_1"]').prop('style');
+      const simonStyle2 = wrapper.find('[id="simon_2"]').prop('style');
+      const simonStyle3 = wrapper.find('[id="simon_3"]').prop('style');
+      expect(simonStyle0).to.have.property('background', 'red');
+      expect(simonStyle1).to.have.property('background', 'green');
+      expect(simonStyle2).to.have.property('background', 'yellow');
+      expect(simonStyle3).to.have.property('background', 'blue');
     });
 
   });
