@@ -24,10 +24,6 @@ class Simon extends React.Component {
     setTimeout(() => {this.setState(toggleWasPressed)}, 1000);
   };
 
-  flashAtInterval() {
-
-  }
-
   handleMouseDown(e) {
     if(!this.state.wasPressed) {
       this.flash();

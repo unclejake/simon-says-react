@@ -1,4 +1,5 @@
 import React from 'react';
+import SimonHolder from './SimonHolder';
 import Simon from '../game-pieces/Simon';
 import StartButton from '../menu/StartButton';
 
@@ -8,12 +9,12 @@ class Game extends React.Component {
     super(props);
     this.state = {
       gameRunning: false,
-      numberOfSimons: 1,
+      numberOfSimons: 4,
       colorPairs: [
-        {startingColor: 'red', switchColor: 'blue'},
-        {startingColor: 'green', switchColor: 'yellow'},
-        {startingColor: 'yellow', switchColor: 'red'},
-        {startingColor: 'blue', switchColor: 'green'}
+        {startingColor: 'red', switchColor: 'white'},
+        {startingColor: 'green', switchColor: 'white'},
+        {startingColor: 'yellow', switchColor: 'white'},
+        {startingColor: 'blue', switchColor: 'white'}
       ]
     };
     this.startGame = this.startGame.bind(this);
@@ -30,15 +31,13 @@ class Game extends React.Component {
 
   render() {
     if(this.state.gameRunning) {
-      this.simons = Array.from(Array(this.state.numberOfSimons).keys()).map((simon, index) => (
-        <Simon key={'simon_' + index} index={index} startingColor={this.state.colorPairs[index % 4].startingColor} switchColor={this.state.colorPairs[index % 4].switchColor} />
-      ));
+      this.simonHolder = <SimonHolder numberOfSimons={this.state.numberOfSimons} colorPairs={this.state.colorPairs} />
     } else {
-      this.simons = null;
+      this.simonHolder = null;
     };
     return(
       <div id="game">
-        {this.simons}
+        {this.simonHolder}
         <StartButton gameRunning={this.state.gameRunning} startGame={this.startGame} endGame={this.endGame} />
       </div>
     );
